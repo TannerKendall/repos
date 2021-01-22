@@ -34,6 +34,6 @@ public class TraditionalFizzBuzz {
             }
             
         }
-        
+        System.out.println("TRADITION!!!!!");
     }
 }
