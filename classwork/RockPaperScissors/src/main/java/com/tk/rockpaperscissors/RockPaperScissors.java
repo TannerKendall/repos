@@ -22,9 +22,6 @@ public class RockPaperScissors {
         int paper = 2;
         int scissors = 3;
         int rounds;
-        int playerScore = 0;
-        int npcScore = 0;
-        int ties = 0;
         String player;
         String again;
         boolean y = true;
@@ -32,8 +29,12 @@ public class RockPaperScissors {
         System.out.println("-----ROCK PAPER SCISSORS-----");
         System.out.println("");
         do {
+            int playerScore = 0;
+            int npcScore = 0;
+            int ties = 0;
             System.out.println("How many rounds would you like to play? (1-10)");
             rounds = inputReader.nextInt();
+            inputReader.nextLine();
         
         
             if(rounds > 10) {
@@ -41,7 +42,6 @@ public class RockPaperScissors {
             } else {
         
                 for(int i = rounds; i > 0; i--){
-                    
                     System.out.println("Rock, paper, scissors shoot: ");
                     player = inputReader.nextLine();
                     String npc = npc();
@@ -87,6 +87,8 @@ public class RockPaperScissors {
                     System.out.println("Thanks for playing!!!");
                     y = false;
                 }
+                
+                
             
             }
         } while (y == true);
