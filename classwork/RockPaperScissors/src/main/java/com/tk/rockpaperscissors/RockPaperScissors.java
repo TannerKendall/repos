@@ -37,12 +37,12 @@ public class RockPaperScissors {
             inputReader.nextLine();
         
         
-            if(rounds > 10) {
-                System.out.println("Sorry, that is too many rounds for me.");
+            if(rounds > 10 || rounds < 1) {
+                System.out.println("Please try a valid number next time.");
             } else {
         
                 for(int i = rounds; i > 0; i--){
-                    System.out.println("Rock, paper, scissors shoot: ");
+                    System.out.println("Rock, paper, scissors shoot (choose one):");
                     player = inputReader.nextLine();
                     String npc = npc();
                     System.out.println(npc);
