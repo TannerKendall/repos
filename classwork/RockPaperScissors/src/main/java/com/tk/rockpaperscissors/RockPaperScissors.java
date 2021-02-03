@@ -16,11 +16,7 @@ public class RockPaperScissors {
     public static void main(String[] args) {
         
         Scanner inputReader = new Scanner(System.in);
-        Random randomizer = new Random();
         
-        int rock = 1;
-        int paper = 2;
-        int scissors = 3;
         int rounds;
         String player;
         String again;
