@@ -24,7 +24,7 @@ public class HealthyHearts {
         System.out.println();
         
         maxHeartRate = 220 - age;
-        targetRateLow = maxHeartRate * .5;
+        targetRateLow = Math.ceil(maxHeartRate * .5);
         targetRateHigh = Math.ceil(maxHeartRate * .85);
         
         System.out.println("Your maximum heart rate should be " + maxHeartRate + " beats per minute");

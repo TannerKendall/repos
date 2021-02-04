@@ -29,23 +29,19 @@ public class DogGenetics {
         System.out.println(dogName + " is: ");
         System.out.println("");
         
-        stBernard = randomizer.nextInt(remains);
+        stBernard = randomizer.nextInt(21);
         System.out.println(stBernard + "% St. Bernard");
-        //remains = remains - stBernard;
         
-        chihuahua = randomizer.nextInt(remains - stBernard);
+        chihuahua = randomizer.nextInt(21);
         System.out.println(chihuahua + "% Chihuahua");
-        //remains = remains - chihuahua;
         
-        pug = randomizer.nextInt(remains - (stBernard + chihuahua));
+        pug = randomizer.nextInt(21);
         System.out.println(pug + "% Dramatic RedNosed Asian Pug");
-        //remains = remains - pug;
         
-        cur = randomizer.nextInt(remains - (stBernard + chihuahua + pug));
+        cur = randomizer.nextInt(21);
         System.out.println(cur + "% Common Cur");
-        //remains = remains - cur;
         
-        doberman = randomizer.nextInt(remains - (stBernard + chihuahua + pug + cur));
+        doberman = 100 - (stBernard + chihuahua + pug + cur);
         System.out.println(doberman + "% Doberman");
         
         System.out.println("");
