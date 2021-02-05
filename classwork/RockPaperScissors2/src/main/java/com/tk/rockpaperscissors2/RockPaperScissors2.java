@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tk.rockpaperscissors;
+package com.tk.rockpaperscissors2;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -12,14 +12,15 @@ import java.util.Scanner;
  *
  * @author Tanner Kendall
  */
-public class RockPaperScissors {
+public class RockPaperScissors2 {
     public static void main(String[] args) {
         
         Scanner inputReader = new Scanner(System.in);
         
         int rounds;
-        int playerMove;
+        int playerMove = 0;
         String player;
+        String npcString;
         String again;
         boolean y = true;
         
@@ -41,17 +42,42 @@ public class RockPaperScissors {
                 for(int i = rounds; i > 0; i--){
                     System.out.println("Rock, paper, scissors shoot (choose one):");
                     player = inputReader.nextLine();
-                    String npc = npc();
-                    System.out.println(npc);
-                    if (player.equals(npc)) {
+                    if (player.equalsIgnoreCase("rock")){
+                        playerMove = 1;
+                    } else if(player.equalsIgnoreCase("paper")) {
+                        playerMove = 2;
+                    } else if(player.equalsIgnoreCase("scissors")) {
+                        playerMove = 3;
+                    } else {
+                        System.out.println("Please enter a valid move next time..");
+                    }
+                    int npc = npc();
+                    
+                    switch (npc) {
+                        case 1:
+                            npcString = "Rock";
+                            break;
+                        case 2:
+                            npcString = "Paper";
+                            break;
+                        default:
+                            npcString = "Scissors";
+                            break;
+                    }
+                    
+                    System.out.println(npcString);
+                    if (playerMove == npc) {
                         System.out.println("This round is a tie.");
                         ties++;
-                    } else if ((player.equals("rock") && npc.equals("scissors")) || 
-                            (player.equals("scissors") && npc.equals("paper")) ||
-                            (player.equals("paper") && npc.equals("rock"))) {
+                    } else if ((playerMove == 1 && npc == 3) || 
+                            (playerMove == 2 && npc == 1) ||
+                            (playerMove == 3 && npc == 2)) {
                         System.out.println("You won!");
                         playerScore++;
-                    } else {
+                    } else if (playerMove == 0) {
+                        System.out.println("You didn't enter a valid move, I win by default.");
+                        npcScore++;
+                    }else {
                         System.out.println("Ha, gotcha this time. I win.");
                         npcScore++;
                     }
@@ -91,23 +117,12 @@ public class RockPaperScissors {
         } while (y == true);
     }
     
-    public static String npc(){
+    public static int npc(){
         Random randomizer = new Random();
-        String npcString;
-        int npc = randomizer.nextInt(3) + 1;
+        int npcInt = randomizer.nextInt(3) + 1;
         
-        switch (npc) {
-            case 1:
-                npcString = "rock";
-                break;
-            case 2:
-                npcString = "paper";
-                break;
-            default:
-                npcString = "scissors";
-                break;
-        }
-        return npcString;
+        return npcInt;
     }
     
 }
+
