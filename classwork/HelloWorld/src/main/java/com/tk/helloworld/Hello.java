@@ -7,8 +7,9 @@
 package com.tk.helloworld;
 
 public class Hello {
-    public static void main(String[] args) {
+    
+    public void sayHello(){
         System.out.println("Hello, World!");
-        System.out.println("My name is Tanner");
     }
+    
 }
