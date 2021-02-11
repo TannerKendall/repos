@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Tanner Kendall
  */
 public class interestCalculator {
-    public static void main(String[] args) {
+    public void Calculate() {
         
         Scanner inputReader = new Scanner(System.in);
         

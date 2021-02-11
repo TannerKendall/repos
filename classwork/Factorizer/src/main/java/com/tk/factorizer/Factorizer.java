@@ -12,8 +12,8 @@ import java.util.Scanner;
  * @author Tanner Kendall
  */
 public class Factorizer {
-    public static void main(String[] args) {
-        
+    public void Factorize() {
+    
         Scanner inputReader = new Scanner(System.in);
         int userNumber;
         int numOfFactors = 0;
