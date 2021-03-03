@@ -61,6 +61,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     @Override
     public DVD editDVD(String newTitle, String oldTitle) throws DVDLibraryDaoException {
         DVD editedDVD = dvds.remove(oldTitle);
+        removeDVD(oldTitle);
         dvds.put(newTitle, editedDVD);
         return editedDVD;
     }

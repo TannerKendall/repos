@@ -50,7 +50,9 @@ public class DVDLibraryView {
     }
     
     public void displayAddDVDBanner(){
+        io.print("");
         io.print("=== ADD DVD ===");
+        io.print("");
     }
     
     public void displayAddSuccessBanner() {
@@ -74,11 +76,14 @@ public class DVDLibraryView {
     }
     
     public void displayDisplayAllBanner(){
+        io.print("");
         io.print("=== DISPLAY ALL DVDs ===");
     }
     
     public void displayDisplayDVDBanner(){
+        io.print("");
         io.print("=== Display DVD ===");
+        io.print("");
     }
     
     public String getTitleChoice(){
@@ -119,11 +124,9 @@ public class DVDLibraryView {
     }
     
     public void displayEditBanner(){
+        io.print("");
         io.print("=== EDIT DVD ===");
-    }
-    
-    public String getEditTitle(){
-        return io.readString("Please enter the title of the DVD you wish to edit.");
+        io.print("");
     }
     
     public int printEditMenuAndGetSelection(){
@@ -140,12 +143,51 @@ public class DVDLibraryView {
         return io.readInt("Please select from the above choices.", 1, 7);
     }
     
+    public DVD editDVDFields(DVD editedDVD){
+        if(editedDVD != null){
+            int editSelection = printEditMenuAndGetSelection();
+            
+            switch(editSelection) {
+                case 1:
+                    String newTitle = getEditString();
+                    editedDVD.setTitle(newTitle);
+                    break;
+                case 2:
+                    editedDVD.setReleaseDate(getEditString());
+                    break;
+                case 3:
+                    editedDVD.setMpaaRating(getEditString());
+                    break;
+                case 4:
+                    editedDVD.setDirector(getEditString());
+                    break;
+                case 5:
+                    editedDVD.setStudio(getEditString());
+                    break;
+                case 6:
+                    editedDVD.setUserRating(getEditString());
+                    break;
+                case 7:
+                    break;
+            }
+        } else {
+            io.print("No such DVD.");
+        }
+            return editedDVD;
+    }
+    
+    public String getEditTitle(){
+        return io.readString("Please enter the title of the DVD you wish to edit.");
+    }
+    
     public String getEditString(){
         return io.readString("Please enter the new information for the selected option above.");
     }
     
     public void displayEditSuccessBanner(){
+        io.print("");
         io.print("=== EDIT SUCCESS ===");
+        io.print("");
     }
     
     public void displayExitBanner(){
@@ -159,6 +201,11 @@ public class DVDLibraryView {
     public void displayErrorMessage(String errorMsg){
         io.print("=== ERROR ===");
         io.print(errorMsg);
+    }
+    
+    public void displayCantFindDVD(){
+        io.print("This DVD is not in the library currently. Please try again with a DVD from the library, or try again with the correct spelling.");
+        io.print("");
     }
     
 }

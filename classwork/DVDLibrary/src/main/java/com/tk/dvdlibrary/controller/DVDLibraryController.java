@@ -101,46 +101,28 @@ public class DVDLibraryController {
     }
     
     private void editDVD() throws DVDLibraryDaoException{
-        boolean keepGoing = true;
         
-        view.displayEditBanner();
-        String title = view.getEditTitle();
-        DVD editedDVD = dao.getDVD(title);
-        
-        while(keepGoing){
-            int editSelection = view.printEditMenuAndGetSelection();
+        try{
             
-            switch(editSelection) {
-                case 1:
-                    String newTitle = view.getEditString();
-                    editedDVD.setTitle(newTitle);
-                    dao.editDVD(newTitle, title);
-                    break;
-                case 2:
-                    editedDVD.setReleaseDate(view.getEditString());
-                    break;
-                case 3:
-                    editedDVD.setMpaaRating(view.getEditString());
-                    break;
-                case 4:
-                    editedDVD.setDirector(view.getEditString());
-                    break;
-                case 5:
-                    editedDVD.setStudio(view.getEditString());
-                    break;
-                case 6:
-                    editedDVD.setUserRating(view.getEditString());
-                    break;
-                case 7:
-                    keepGoing = false;
-                    break;
-            }
+            view.displayEditBanner();
+            
+            DVD editedDVD = dao.getDVD(view.getEditTitle());
+            
+            String prevTitle = editedDVD.getTitle();
+            
+            view.editDVDFields(editedDVD);
             
             String newTitle = editedDVD.getTitle();
-            dao.removeDVD(title);
-            dao.addDVD(newTitle, editedDVD);
+            
+            dao.editDVD(newTitle, prevTitle);
+            
+            view.displayEditSuccessBanner();
+            
+        } catch (NullPointerException n){
+            
+            view.displayCantFindDVD();
+            
         }
-        view.displayEditSuccessBanner();
     }
     
     private void unknownCommand(){
