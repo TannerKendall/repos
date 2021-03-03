@@ -45,7 +45,7 @@ public class DVD {
 
     public void setMpaaRating(String mpaaRating) {
         if(mpaaRating.equalsIgnoreCase("G") || mpaaRating.equalsIgnoreCase("PG") || 
-                mpaaRating.equalsIgnoreCase("PG13") || mpaaRating.equalsIgnoreCase("R") || mpaaRating.equalsIgnoreCase("Unrated")){
+                mpaaRating.equalsIgnoreCase("PG13") || mpaaRating.equalsIgnoreCase("PG-13") || mpaaRating.equalsIgnoreCase("R") || mpaaRating.equalsIgnoreCase("Unrated")){
             this.mpaaRating = mpaaRating;
         } else {
             this.mpaaRating = "Unrated";
