@@ -17,6 +17,7 @@ public class DVD {
     private String director;
     private String studio;
     private String userRating;
+    //private boolean valid;
 
     public DVD(String title){
         this.title = title;
@@ -43,7 +44,12 @@ public class DVD {
     }
 
     public void setMpaaRating(String mpaaRating) {
-        this.mpaaRating = mpaaRating;
+        if(mpaaRating.equalsIgnoreCase("G") || mpaaRating.equalsIgnoreCase("PG") || 
+                mpaaRating.equalsIgnoreCase("PG13") || mpaaRating.equalsIgnoreCase("R") || mpaaRating.equalsIgnoreCase("Unrated")){
+            this.mpaaRating = mpaaRating;
+        } else {
+            this.mpaaRating = "Unrated";
+        }
     }
 
     public String getDirector() {

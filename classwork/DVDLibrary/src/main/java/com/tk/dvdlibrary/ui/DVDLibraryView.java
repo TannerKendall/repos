@@ -35,7 +35,7 @@ public class DVDLibraryView {
     public DVD getNewDVDInfo() {
         String title = io.readString("Please enter the title of the DVD");
         String releaseDate = io.readString("Please enter the release date of the DVD");
-        String mpaaRating = io.readString("Please enter the MPAA rating for the movie (example: PG)");
+        String mpaaRating = io.readString("Please enter the MPAA rating for the movie (G, PG, PG-13, R, or Unrated)");
         String director = io.readString("Please enter the name of the director");
         String studio = io.readString("Please enter the name of the studio");
         String userRating = io.readString("Enter a user rating, or your opinion on the movie");
@@ -97,12 +97,12 @@ public class DVDLibraryView {
     public void displayDVD(DVD dvd){
         if (dvd != null) {
             io.print("");
-            io.print(dvd.getTitle());
-            io.print(dvd.getReleaseDate());
-            io.print(dvd.getMpaaRating());
-            io.print(dvd.getDirector());
-            io.print(dvd.getStudio());
-            io.print(dvd.getUserRating());
+            io.print("Title: " + dvd.getTitle());
+            io.print("Release Date: " + dvd.getReleaseDate());
+            io.print("MPAA Rating: " + dvd.getMpaaRating());
+            io.print("Director: " + dvd.getDirector());
+            io.print("Studio: " + dvd.getStudio());
+            io.print("User Rating: " + dvd.getUserRating());
             io.print("");
         } else {
             io.print("No such DVD.");
@@ -144,36 +144,32 @@ public class DVDLibraryView {
     }
     
     public DVD editDVDFields(DVD editedDVD){
-        if(editedDVD != null){
-            int editSelection = printEditMenuAndGetSelection();
-            
-            switch(editSelection) {
-                case 1:
-                    String newTitle = getEditString();
-                    editedDVD.setTitle(newTitle);
-                    break;
-                case 2:
-                    editedDVD.setReleaseDate(getEditString());
-                    break;
-                case 3:
-                    editedDVD.setMpaaRating(getEditString());
-                    break;
-                case 4:
-                    editedDVD.setDirector(getEditString());
-                    break;
-                case 5:
-                    editedDVD.setStudio(getEditString());
-                    break;
-                case 6:
-                    editedDVD.setUserRating(getEditString());
-                    break;
-                case 7:
-                    break;
-            }
-        } else {
-            io.print("No such DVD.");
+        int editSelection = printEditMenuAndGetSelection();
+
+        switch(editSelection) {
+            case 1:
+                String newTitle = getEditString();
+                editedDVD.setTitle(newTitle);
+                break;
+            case 2:
+                editedDVD.setReleaseDate(getEditString());
+                break;
+            case 3:
+                editedDVD.setMpaaRating(getEditString());
+                break;
+            case 4:
+                editedDVD.setDirector(getEditString());
+                break;
+            case 5:
+                editedDVD.setStudio(getEditString());
+                break;
+            case 6:
+                editedDVD.setUserRating(getEditString());
+                break;
+            case 7:
+                break;
         }
-            return editedDVD;
+        return editedDVD;
     }
     
     public String getEditTitle(){

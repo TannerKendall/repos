@@ -62,6 +62,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     public DVD editDVD(String newTitle, String oldTitle) throws DVDLibraryDaoException {
         DVD editedDVD = dvds.remove(oldTitle);
         removeDVD(oldTitle);
+        addDVD(newTitle, editedDVD);
         dvds.put(newTitle, editedDVD);
         return editedDVD;
     }
@@ -169,11 +170,6 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
             out.flush();
         }
         out.close();
-    }
-    
-    private void overwriteLibrary() throws DVDLibraryDaoException {
-        
-        
     }
     
 }
