@@ -6,8 +6,12 @@
 package com.tk.classroster;
 
 import com.tk.classroster.controller.ClassRosterController;
+import com.tk.classroster.dao.ClassRosterAuditDao;
+import com.tk.classroster.dao.ClassRosterAuditDaoFileImpl;
 import com.tk.classroster.dao.ClassRosterDao;
 import com.tk.classroster.dao.ClassRosterDaoFileImpl;
+import com.tk.classroster.service.ClassRosterServiceLayer;
+import com.tk.classroster.service.ClassRosterServiceLayerImpl;
 import com.tk.classroster.ui.ClassRosterView;
 import com.tk.classroster.ui.UserIO;
 import com.tk.classroster.ui.UserIOConsoleImpl;
@@ -26,7 +30,11 @@ public class App {
         
         ClassRosterDao myDao = new ClassRosterDaoFileImpl();
         
-        ClassRosterController controller = new ClassRosterController(myDao, myView);
+        ClassRosterAuditDao myAuditDao = new ClassRosterAuditDaoFileImpl();
+        
+        ClassRosterServiceLayer myService = new ClassRosterServiceLayerImpl(myDao, myAuditDao);
+        
+        ClassRosterController controller = new ClassRosterController(myService, myView);
         
         controller.run();
     }
